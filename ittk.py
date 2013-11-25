@@ -45,7 +45,7 @@ def mutual_information(X, Y):
 
 #Variation of information
 def information_variation(X, Y):
-    return -entropy(X) - entropy(Y) + 2*mutual_information(X, Y)
+    return entropy(X) + entropy(Y) - 2*mutual_information(X, Y)
 
 def kldiv(X, Y):
     p = array( X )
