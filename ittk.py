@@ -5,17 +5,17 @@ MIT license.
 '''
 
 #All default to log base 2.  Modify to your purposes.
-
+from __future__ import division
 import math
 import numpy as np
 from numpy import array, shape, where, in1d
 
-from __future__ import division
 
 def entropy(X):
     X = probs(X)
     total = 0
     for x in X:
+        if x==0: continue
         total -= x*np.log2(x)
     return total
 
@@ -47,9 +47,11 @@ def mutual_information(X, Y):
 def information_variation(X, Y):
     return entropy(X) + entropy(Y) - 2*mutual_information(X, Y)
 
+'''
 def kldiv(X, Y):
-    p = array( X )
-    q = array( Y )
+    p = probs(X)
+    q = probs(Y)
     logpq = np.log2( p / q )
     kldivergence = np.dot( p, logpq )
     return kldivergence
+'''
