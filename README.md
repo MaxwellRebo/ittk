@@ -9,7 +9,7 @@ ittk: Information Theory Toolkit
 
   TODO: Expand to more complex data types; helper methods to format data; parallel/many-core versions; additional useful information-theoretic and probabilistic methods.
 
-  If you have a suggestion for an algorithm you'd like to see added here, please let me now and I'm happy to add it!
+  If you have a suggestion for an algorithm you'd like to see added here, please let me know and I'm happy to add it!
   
 ###Usage examples
 
