@@ -15,7 +15,7 @@ ittk: Information Theory Toolkit
 
 All of these examples assume discrete variables.
 
-First, do `import ittk`.
+First, do `import ittk`.  Make sure you're using numpy arrays, so also do `import numpy`.
 
 Just get the probability of each variable occuring:
 
