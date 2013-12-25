@@ -7,7 +7,7 @@ ittk: Information Theory Toolkit
 
   Please ping me if you find any errors.  These functions have been tested against both Matlab and R implementation of the same kind, and found to be generally sound as of this writing.
 
-  TODO: Expand to more complex data types; helper methods to format data; parallel/many-core versions; additional useful information-theoretic and probabilistic methods.
+  Coming soon: Information integration (phi-index).  
 
   If you have a suggestion for an algorithm you'd like to see added here, please let me know and I'm happy to add it!
   
