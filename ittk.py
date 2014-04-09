@@ -8,6 +8,7 @@ MIT license.
 from __future__ import division
 import math
 import numpy as np
+import ittk_helpers as hlp
 from numpy import array, shape, where, in1d
 
 
@@ -50,19 +51,10 @@ def information_variation(X, Y):
 def kldiv(X, Y):
     p = probs(X)
     q = probs(Y)
-    p, q = match_arrays(p, q)
+    p, q = hlp.match_arrays(p, q)
     logpq = np.array([])
     for i in range(len(p)):
         if q[i]==0 or p[i]==0: logpq = np.append(logpq, 0)
         else: logpq = np.append(logpq, np.log2(p[i]/q[i]))
     kldivergence = np.dot( p, logpq )
     return kldivergence
-
-def match_arrays(X, Y):
-    if len(X) > len(Y):
-        for i in range(len(X) - len(Y)):
-            Y = np.append(Y, 0)
-    elif len(Y) > len(X):
-        for i in range(len(Y) - len(X)):
-            X = np.append(X, 0)
-    return (X, Y)
