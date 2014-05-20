@@ -19,9 +19,15 @@ class PhiSystem:
 	def integratedInformation(self):
 		pass
 
+	def probsFromRepertoire(self, rep):
+		pass
+
 	#Generate complete Cause-Effect repertoire of system given 'node' is in 'state'
 	def causeEffectRepertoire(self, node, state):
 		pass
+
+	def causeEffectInformation(self, node, state):
+		return min( self.effectiveInformation(node, state, 'cause'), self.effectiveInformation(node, state, 'effect') )
 
 	def causeRepertoire(self, node, state):
 		pass
@@ -30,8 +36,12 @@ class PhiSystem:
 		pass
 
 	#Calculate effective information of state
-	def effectiveInformation(self, node, state):
-		pass
+	def effectiveInformation(self, node, state, rep_type):
+		if rep_type=='cause':
+			return self.divergenceFromUniform( self.probsFromRepertoire( self.causeRepertoire(node, state) ) )
+		elif rep_type=='effect':
+			return self.divergenceFromUniform( self.probsFromRepertoire( self.effectRepertoire(node, state) ) )
+
 
 	#Generate possible past/future states of system given 'node' is in 'state'
 	def generatePossibleStates(self, node, state):
