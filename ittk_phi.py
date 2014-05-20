@@ -43,4 +43,4 @@ class PhiSystem:
 		uniform = np.zeros(self.num_possible_states)
 		for i in range(len(uniform)):
 			uniform[i] = uniform_prob
-		return ittk.kldiv(uniform, state_probs, True)
+		return ittk.kldiv(state_probs, uniform, True)

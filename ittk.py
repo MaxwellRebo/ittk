@@ -52,6 +52,9 @@ def kldiv(X, Y, isprobs=False):
     if isprobs==False:
         p = probs(X)
         q = probs(Y)
+    else:
+        p = X
+        q = Y
     p, q = hlp.match_arrays(p, q)
     logpq = np.array([])
     for i in range(len(p)):
