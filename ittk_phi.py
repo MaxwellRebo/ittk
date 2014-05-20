@@ -12,6 +12,7 @@ class PhiSystem:
 	def __init__(self, num_nodes):
 		self.graph = gr.Graph(num_nodes)
 		self.num_possible_states = 2**num_nodes
+		self.mechanisms = [0] * num_nodes
 		self.phi = 0
 
 	#Calculate the complete integrated information (phi-value) of this system
@@ -20,6 +21,12 @@ class PhiSystem:
 
 	#Generate complete Cause-Effect repertoire of system given 'node' is in 'state'
 	def causeEffectRepertoire(self, node, state):
+		pass
+
+	def causeRepertoire(self, node, state):
+		pass
+
+	def effectRepertoire(self, node, state):
 		pass
 
 	#Calculate effective information of state
@@ -32,7 +39,7 @@ class PhiSystem:
 
 	#Given a list of complete probabilities of states, calculate divergence from uniform distribution
 	def divergenceFromUniform(self, state_probs):
-		uniform_prob = 1.0/float(self.num_nodes)
+		uniform_prob = 1.0/float(self.num_possible_states)
 		uniform = np.zeros(self.num_possible_states)
 		for i in range(len(uniform)):
 			uniform[i] = uniform_prob
