@@ -48,9 +48,10 @@ def mutual_information(X, Y):
 def information_variation(X, Y):
     return entropy(X) + entropy(Y) - 2*mutual_information(X, Y)
 
-def kldiv(X, Y):
-    p = probs(X)
-    q = probs(Y)
+def kldiv(X, Y, isprobs=False):
+    if isprobs==False:
+        p = probs(X)
+        q = probs(Y)
     p, q = hlp.match_arrays(p, q)
     logpq = np.array([])
     for i in range(len(p)):
