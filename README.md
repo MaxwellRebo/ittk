@@ -10,6 +10,12 @@ ittk: Information Theory Toolkit
   Coming soon: Information integration (phi-index).  
 
   If you have a suggestion for an algorithm you'd like to see added here, please let me know and I'm happy to add it!
+
+  Current status of modules:
+  	-ittk.py: STABLE
+  	-ittk_helpers.py: STABLE
+  	-graph.py: STABLE but WIP
+  	-ittk_phi.py: INCOMPLETE - WIP
   
 ###Usage examples
 
