@@ -11,6 +11,7 @@ import graph as gr
 class PhiSystem:
 	def __init__(self, num_nodes):
 		self.graph = gr.Graph(num_nodes)
+		self.num_possible_states = 2**num_nodes
 		self.phi = 0
 
 	#Calculate the complete integrated information (phi-value) of this system
@@ -32,7 +33,7 @@ class PhiSystem:
 	#Given a list of complete probabilities of states, calculate divergence from uniform distribution
 	def divergenceFromUniform(self, state_probs):
 		uniform_prob = 1.0/float(self.num_nodes)
-		uniform = np.zeros(self.num_nodes)
+		uniform = np.zeros(self.num_possible_states)
 		for i in range(len(uniform)):
 			uniform[i] = uniform_prob
 		return ittk.kldiv(uniform, state_probs, True)
