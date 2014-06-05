@@ -1,6 +1,6 @@
 import numpy as np
 
-def match_arrays(X, Y):
+def matchArrays(X, Y):
     if len(X) > len(Y):
         for i in range(len(X) - len(Y)):
             Y = np.append(Y, 0)

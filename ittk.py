@@ -26,8 +26,11 @@ def probs(X):
     P = c / float(n)
     return P
 
-def mutual_information(X, Y):
+def mutualInformation(X, Y, normalized=False):
     #Expects numpy arrays.  Will not work on regular lists
+    #Will make them into numpy arrays if they're not already
+    X = array(X)
+    Y = array(Y)
     numobs = len(X)
     base = 2
     assert numobs == len(Y), "Not matching length"
@@ -42,11 +45,12 @@ def mutual_information(X, Y):
                             where(Y==y)[0])==True)[0]) / numobs
             if pxy > 0.0:
                 mutual_info += pxy * math.log((pxy / (px*py)), base)
+    if normalized: mutual_info = mutual_info / np.log2(len(X)) 
     return mutual_info
 
 #Variation of information
-def information_variation(X, Y):
-    return entropy(X) + entropy(Y) - 2*mutual_information(X, Y)
+def informationVariation(X, Y):
+    return entropy(X) + entropy(Y) - 2*mutualInformation(X, Y)
 
 def kldiv(X, Y, isprobs=False):
     if isprobs==False:
@@ -55,10 +59,22 @@ def kldiv(X, Y, isprobs=False):
     else:
         p = X
         q = Y
-    p, q = hlp.match_arrays(p, q)
+    p, q = hlp.matchArrays(p, q)
     logpq = np.array([])
     for i in range(len(p)):
         if q[i]==0 or p[i]==0: logpq = np.append(logpq, 0)
         else: logpq = np.append(logpq, np.log2(p[i]/q[i]))
     kldivergence = np.dot( p, logpq )
     return kldivergence
+
+#Note: this will reduce the length of the sequence by the number of lag points
+#X: numpy array
+#Y: numpy array
+#lag: integer.  defaults to 1
+def laggedMutualInformation(X, Y, lag=1):
+    for i in range(lag):
+        X.pop(0)
+        Y.pop()
+    return mutualInformation(X, Y)
+
+
