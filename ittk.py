@@ -26,14 +26,16 @@ def probs(X):
     P = c / float(n)
     return P
 
-def mutualInformation(X, Y, normalized=False):
-    #Expects numpy arrays.  Will not work on regular lists
-    #Will make them into numpy arrays if they're not already
-    X = array(X)
-    Y = array(Y)
+def mutualInformation(X, Y, normalized=False, base=2):
+    #Accepts lists or numpy arrays; will make X and Y into numpy arrays if they're not already
+    if (type(X).__module__ !='numpy'):
+        X = array(X)
+    if (type(Y).__module__ !='numpy'):
+        X = array(Y)
     numobs = len(X)
-    base = 2
-    assert numobs == len(Y), "Not matching length"
+    if numobs != len(Y):
+        raise Exception("Not matching length")
+        return None
     mutual_info = 0.0
     uniq_x = set(X)
     uniq_y = set(Y)
@@ -45,7 +47,7 @@ def mutualInformation(X, Y, normalized=False):
                             where(Y==y)[0])==True)[0]) / numobs
             if pxy > 0.0:
                 mutual_info += pxy * math.log((pxy / (px*py)), base)
-    if normalized: mutual_info = mutual_info / np.log2(len(X)) 
+    if normalized: mutual_info = mutual_info / np.log2(numobs) 
     return mutual_info
 
 #Variation of information
