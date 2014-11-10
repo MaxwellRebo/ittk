@@ -9,6 +9,7 @@ from __future__ import division
 import math
 import numpy as np
 import ittk_helpers as hlp
+from hlp import probs
 from numpy import array, shape, where, in1d
 
 
@@ -19,12 +20,6 @@ def entropy(X):
         if x==0: continue
         total -= x*np.log2(x)
     return total
-
-def probs(X):
-    n = len(X)
-    c = np.bincount(X)
-    P = c / float(n)
-    return P
 
 def mutualInformation(X, Y, normalized=False, base=2):
     #Accepts lists or numpy arrays; will make X and Y into numpy arrays if they're not already
@@ -61,7 +56,7 @@ def kldiv(X, Y, isprobs=False):
     else:
         p = X
         q = Y
-    p, q = hlp.matchArrays(p, q)
+    p, q = hlp.match_arrays(p, q)
     logpq = np.array([])
     for i in range(len(p)):
         if q[i]==0 or p[i]==0: logpq = np.append(logpq, 0)
