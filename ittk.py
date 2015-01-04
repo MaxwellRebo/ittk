@@ -88,6 +88,10 @@ def lagged_mutual_information(X, Y, lag_points=1):
     return mutual_information(X, Y)
 
 
+####################
+# Test cases
+####################
+
 class TestMutualInformation(unittest.TestCase):
     def test_mutual_information(self):
         x = np.array([7, 7, 7, 3])
