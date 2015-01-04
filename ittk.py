@@ -98,6 +98,10 @@ class TestMutualInformation(unittest.TestCase):
         y = np.array([0, 1, 2, 3])
         mut_inf = mutual_information(x, y)
         self.assertEquals(0.8112781244591329, mut_inf)
+        x2 = [1, 0, 1, 1, 0]
+        y2 = [1, 1, 1, 0, 0]
+        self.assertEquals(mutual_information(x2, y2), 0.01997309402197492)
+
 
 
 class TestInformationVariation(unittest.TestCase):
