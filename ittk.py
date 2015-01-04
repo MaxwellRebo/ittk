@@ -73,7 +73,7 @@ def kldiv(X, Y, isprobs=False):
 
 
 # Note: this will reduce the length of the sequence by the number of lag points
-#X: numpy array
+# X: numpy array
 #Y: numpy array
 #lag_points: integer. defaults to 1
 def lag(x, y, lag_points=1):
@@ -104,9 +104,15 @@ class TestInformationVariation(unittest.TestCase):
         self.assertEquals(1.1887218755408671, inf_var)
 
 
-class TestProbs(unittest.TestCase):
-    def test_mutual_information(self):
-        self.assertEquals(hlp.probs(probs([1,2,3])), array([ 0.,  0.33333333,  0.33333333,  0.33333333]))
+# class TestProbs(unittest.TestCase):
+#     def test_probs(self):
+#         correct_array = array([0, 0.33333333, 0.33333333, 0.33333333])
+#         test_array = hlp.probs(np.array([1, 2, 3]))
+#         print test_array
+#         print correct_array
+#         print type(test_array)
+#         print type(correct_array)
+#         self.assertTrue(np.array_equal(test_array, correct_array))
 
 
 if __name__ == '__main__':
