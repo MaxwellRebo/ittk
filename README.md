@@ -7,15 +7,16 @@ ittk: Information Theory Toolkit
 
   Please ping me if you find any errors.  These functions have been tested against both Matlab and R implementation of the same kind, and found to be generally sound as of this writing.
 
-  Coming soon: Information integration (phi-index).  
-
-  If you have a suggestion for an algorithm you'd like to see added here, please let me know and I'm happy to add it!
+  If you have a suggestion for an algorithm or metric you'd like to see added here, please let me know and I'm happy to add it.
 
 Current status of modules:
     -ittk.py: STABLE
     -ittk_helpers.py: STABLE
-    -graph.py: STABLE but WIP
-    -ittk_phi.py: INCOMPLETE - WIP
+    
+To run unit tests, simply do:
+```python
+python ittk.py
+```
   
 ###Usage examples
 
