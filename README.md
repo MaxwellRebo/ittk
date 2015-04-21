@@ -1,6 +1,8 @@
 ittk: Information Theory Toolkit
 ====
 
+[![Join the chat at https://gitter.im/MaxwellRebo/ittk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/MaxwellRebo/ittk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
   Information-theoretic methods in Python.  Intended for use in data analysis and machine learning applications.
 
   Kept lean and very simple for transparency and ease of integration in other projects.  Just import into your project and call the appropriate methods wherever you need to - no need to delve into the esoteric math books.
