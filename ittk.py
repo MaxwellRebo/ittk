@@ -10,10 +10,14 @@ import unittest
 import math
 import numpy as np
 import ittk_helpers as hlp
+from ittk_exceptions import ITTKException
 from ittk_helpers import probs
 from numpy import array, shape, where, in1d
 
 # All functions default to log base 2.
+
+def check_prob_sum(arr):
+    return int(sum(arr)) == 1
 
 
 def entropy(X):
@@ -86,6 +90,23 @@ def lag(x, y, lag_points=1):
 def lagged_mutual_information(X, Y, lag_points=1):
     X, Y = lag(X, Y, lag_points)
     return mutual_information(X, Y)
+
+
+def tsallis_entropy(X, entropic_index=0.99):
+    """
+
+    :param X:
+        Python list or Numpy array. Should sum to 1.
+    :param entropic_index:
+        Real number [0, 1]. Defaults to 0.99.
+    :return:
+        Returns the real-valued Tsallis entropy.
+    :raises:
+        Raises generic ITTKException if 1 is passed, since this would result in a division by zero.
+    """
+    if int(entropic_index) == 1:
+        raise ITTKException("Entropic index, 'q', cannot be 1 for tsallis entropy. Must be on interval [0, 1].")
+    return (1.0/(entropic_index-1)) * (1.0 - sum([p ** entropic_index for p in X]))
 
 
 ####################
