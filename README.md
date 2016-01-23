@@ -15,10 +15,12 @@ Current status of modules:
     -ittk.py: STABLE
     -ittk_helpers.py: STABLE
     
-To run unit tests, simply do:
-```python
-python ittk.py
+To run tests, simply do:
 ```
+nosetests
+```
+
+This will automatically run all of the tests in the tests/ directory.
   
 ###Usage examples
 
@@ -26,7 +28,7 @@ All of these examples assume discrete variables.
 
 First, do `import ittk`.  Make sure you're using numpy arrays, so also do `import numpy`.
 
-Just get the probability of each variable occuring:
+Get the probability of each variable occuring:
 
 ```python
 ittk.probs([1,2,3])

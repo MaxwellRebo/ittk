@@ -1,14 +1,30 @@
 import numpy as np
 
 
-def probs(X):
-    n = len(X)
-    c = np.bincount(X)
-    p = c / float(n)
+def probs(x):
+    """
+    Computes a discrete probability distribution from a list of observations.
+
+    :param x:
+     List or numpy array
+    :return:
+     List: The probability of each symbol appearing in the observations from x.
+    """
+    n = len(x)
+    num_bins = np.bincount(x)
+    p = num_bins / float(n)
     return p
 
 
 def cond_probs(obs):
+    """
+    Computes a discrete conditional probability distribution from two lists of observations.
+
+    :param obs:
+     An ordered list of observations.
+    :return:
+     Dict: A discrete conditional probability distribution, represented as a dictionary.
+    """
     if type(obs) is str:
         obs = list(obs)
     obs = [str(ob) for ob in obs]
@@ -35,33 +51,83 @@ def cond_probs(obs):
     return probs_dict
 
 
-def match_arrays(X, Y):
-    if len(X) > len(Y):
-        for i in range(len(X) - len(Y)):
-            Y = np.append(Y, 0)
-    elif len(Y) > len(X):
-        for i in range(len(Y) - len(X)):
-            X = np.append(X, 0)
-    return (X, Y)
+def match_arrays(x, y):
+    """
+    Will add 0's to wichever array is shorter, until it matches the length of the longer array.
+    No-op if they are the same length.
+
+    :param x:
+     Numpy array
+    :param y:
+     Numpy array
+    :return:
+     Numpy array, numpy array
+    """
+    if len(x) > len(y):
+        for i in range(len(x) - len(y)):
+            y = np.append(y, 0)
+    elif len(y) > len(x):
+        for i in range(len(y) - len(x)):
+            x = np.append(x, 0)
+    return x, y
 
 
 def check_numpy_array(x):
-    if type(x).__module__ != 'numpy':
-        x = np.array(x)
-    return x
+    """
+    Will convert x to a numpy array if it is not one already.
+
+    :param x:
+     List or numpy array.
+    :return:
+     Numpy array, from x.
+    """
+    return np.array(x)
 
 
-# Number of unique symbols in list/array
-def num_unique(X):
-    return len(set(X))
+def num_unique(x):
+    """
+    Returns the number of unique symbols in list/array
+
+    :param x:
+     List or numpy array.
+    :return:
+     Integer: the number of unique symbols in the list/array.
+    """
+    return len(set(x))
 
 
-# Checks that number of unique symbols in arrays is the same
-def bin_match(X, Y):
-    return num_unique(X) == num_unique(Y)
+def bin_match(x, y):
+    """
+    Checks that number of unique symbols in arrays is the same.
+
+    Examples:
+
+    bin_match([1,2], ['A', 'B'])
+    True
+
+    bin_match([5, 6, 7], [1, 1, 4, 4])
+    False
+
+    :param x:
+     List
+    :param y:
+     List
+    :return:
+     Bool
+    """
+    return num_unique(x) == num_unique(y)
 
 
-# Verifies that observation variables of X and Y are the same, i.e. they take values in the same probability space
-def variable_match(X, Y):
-    return set(X) == set(Y)
+def variable_match(x, y):
+    """
+    Verifies that observation variables of X and Y are from the same set.
+
+    :param x:
+     List.
+    :param y:
+     List.
+    :return:
+     Bool
+    """
+    return set(x) == set(y)
 
