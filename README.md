@@ -64,7 +64,12 @@ ittk.mutual_information(A, B)
 2.0
 ```
 
-Note that the above is not normalized.
+Note that the above is not normalized. To normalize it to [0, 1], pass normalized as True:
+
+```
+ittk.mutual_information(A, B, normalized=True)
+1.0
+```
   
 ###Dependencies
 
