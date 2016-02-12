@@ -27,6 +27,8 @@ class MarkovChain(object):
         self.current_state = starting_state
         self.t_matrix = np.matrix(t_matrix)
         self.state_labels = state_labels
+        self.states_counts = [0] * self.num_states
+        self.times_run = 0
 
         if len(t_matrix.A) != self.num_states and len(t_matrix.A[0]) != self.num_states:
             raise ittk_exceptions.AsymmetricMatrixException(
@@ -38,12 +40,17 @@ class MarkovChain(object):
         for _ in xrange(num_times):
             next_state = np.random.choice(self.num_states, 1, p=self.t_matrix.A[self.current_state])[0]
         self.current_state = next_state
+        self.times_run += 1
+        self.states_counts[self.current_state] += 1
 
     def print_current_state(self):
         if self.state_labels:
             print self.state_labels[self.current_state]
         else:
             print self.current_state
+
+    def get_steady_state_estimate(self):
+        return [state/float(self.times_run) for state in self.states_counts]
 
     def get_eigenvalues(self):
         return np.linalg.eig(self.t_matrix.A)
