@@ -11,9 +11,7 @@ ittk: Information Theory Toolkit
 
   If you have a suggestion for an algorithm or metric you'd like to see added here, please let me know and I'm happy to add it.
 
-Current status of modules:
-    -ittk.py: STABLE
-    -ittk_helpers.py: STABLE
+###Testing
     
 To run tests, simply do:
 ```
@@ -26,11 +24,13 @@ This will automatically run all of the tests in the tests/ directory.
 
 All of these examples assume discrete variables.
 
-First, do `import ittk`.  Make sure you're using numpy arrays, so also do `import numpy`.
+Make sure you're using numpy arrays.
 
 Get the probability of each variable occuring:
 
 ```python
+import ittk
+
 ittk.probs([1,2,3])
 array([ 0.,  0.33333333,  0.33333333,  0.33333333])
 ```
@@ -64,11 +64,23 @@ ittk.mutual_information(A, B)
 2.0
 ```
 
-Note that the above is not normalized.
+Note that the above is not normalized. To normalize it to [0, 1], pass normalized as True:
+
+```python
+ittk.mutual_information(A, B, normalized=True)
+1.0
+```
   
 ###Dependencies
 
   -numpy
+  -nose
+  
+  Do:
+  
+  ```
+  pip install -r requirements.txt
+  ```
   
 #####License: MIT
   
