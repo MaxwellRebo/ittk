@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 if sys.argv[-1] == 'install':
     setup(name='ittk',
-          version='1.0.0',
+          version='1.0.1',
           description='Information Theory Toolkit',
           author='Maxwell Rebo',
           author_email='maxwell.b.rebo@gmail.com',
