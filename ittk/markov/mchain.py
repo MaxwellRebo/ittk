@@ -1,6 +1,5 @@
 import numpy as np
-
-import ittk_exceptions
+from ittk import ittk_exceptions
 
 
 class MarkovChain(object):
