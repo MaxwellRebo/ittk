@@ -5,6 +5,7 @@ import numpy as np
 import ittk_helpers as hlp
 from ittk_exceptions import ITTKException
 from ittk_helpers import probs
+from ittk_helpers import cond_probs
 from numpy import array, shape, where, in1d
 
 # Note: All functions default to log base 2.
