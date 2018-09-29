@@ -73,8 +73,8 @@ ittk.mutual_information(A, B, normalized=True)
   
 ### Dependencies
 
-  -numpy
-  -nose
+* numpy
+* nose
   
   Do:
   
