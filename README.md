@@ -71,7 +71,7 @@ ittk.mutual_information(A, B, normalized=True)
 1.0
 ```
   
-###Dependencies
+### Dependencies
 
   -numpy
   -nose
@@ -82,5 +82,5 @@ ittk.mutual_information(A, B, normalized=True)
   pip install -r requirements.txt
   ```
   
-#####License: MIT
+##### License: MIT
   
