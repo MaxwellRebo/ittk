@@ -11,7 +11,7 @@ ittk: Information Theory Toolkit
 
   If you have a suggestion for an algorithm or metric you'd like to see added here, please let me know and I'm happy to add it.
 
-###Testing
+### Testing
     
 To run tests, simply do:
 ```
@@ -20,7 +20,7 @@ nosetests
 
 This will automatically run all of the tests in the tests/ directory.
   
-###Usage examples
+### Usage examples
 
 All of these examples assume discrete variables.
 
